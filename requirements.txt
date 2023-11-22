@@ -2,3 +2,4 @@ django
 django-debug-toolbar
 pylint
 pylint-django
+mysqlclient
