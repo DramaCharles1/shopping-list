@@ -60,3 +60,6 @@ Migrate models\
 
 Manage shell\
 `python manage.py shell`
+
+### Add admin
+`python manage.py createsuperuser`
