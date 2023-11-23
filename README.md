@@ -49,3 +49,14 @@ Grant *all* permissions\
 
 Migrate\
 `python manage.py migrate`
+
+Migrate models\
+*Changes to models is stored as a migration*\
+`python manage.py makemigrations shopping_list`\
+*Return migration names as SQL. Good for debugging*\
+`python manage.py sqlmigrate shopping_list 0001`\
+*synchronize changes in model to database* \
+`python manage.py migrate`
+
+Manage shell\
+`python manage.py shell`
