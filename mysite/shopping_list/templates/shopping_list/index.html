@@ -1,1 +1,11 @@
 <h1>Shopping list</h1>
+
+{% if latest_shopping_list %}
+    <ul>
+        {% for item in latest_shopping_list %}
+            <li>{{ item.item }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No items are available.</p>
+{% endif %}
