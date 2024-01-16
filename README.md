@@ -13,7 +13,7 @@ cd mysite
 python manage.py runserver
 
 ## Pylint
-pylint --load-plugins pylint_django --django-settings-module=mysite.settings --rcfile .pylintrc .\mysite\shopping_list\
+`pylint --load-plugins pylint_django --django-settings-module=mysite.settings --rcfile .pylintrc ./mysite/shopping_list`
 
 ### Install MariaDB
 Install mysqlclient\
