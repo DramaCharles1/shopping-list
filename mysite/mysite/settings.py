@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +25,6 @@ SECRET_KEY = 'django-insecure-1#es^oom$=pxcpk@p4*5q88*^14xw-2b2+%m%@d$!kvbpy%z2!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -77,11 +75,11 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopping_list',
-        'USER': 'new',
-        'HOST': 'localhost',
-        'PASSWORD': 'password',
-        'port': '',
+        'NAME': config('MYSQL_DATABASE'),
+        'USER': config('MYSQL_USER'),
+        'PASSWORD': config('MYSQL_ROOT_PASSWORD'),
+        'HOST': config('DB_HOST', 'db'), # Use 'db' as default from .env
+        'port': config('DB_PORT', '3306'), # Use '3306' as default from .env
     }
 }
 
