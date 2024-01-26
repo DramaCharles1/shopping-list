@@ -1,6 +1,6 @@
 django
-django
 django-debug-toolbar
+djangorestframework
 pylint
 pylint-django
 mysqlclient
