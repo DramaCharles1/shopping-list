@@ -1,8 +1,13 @@
 from django.views import generic
-from django.http import HttpResponse
 from django.utils import timezone
-
+from rest_framework import generics
+from .serializers import ItemSerializer
 from .models import Item
+
+
+class ItemlListCreateView(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
 
 class IndexView(generic.ListView):
     template_name = "shopping_list/index.html"
