@@ -1,11 +1,37 @@
-<h1>Shopping list</h1>
-
-{% if latest_shopping_list %}
-    <ul>
-        {% for item in latest_shopping_list %}
-            <li>{{ item.item }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+    {% if latest_shopping_list %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Bought</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in latest_shopping_list %}
+                <tr>
+                    <td>{{ item.item }}</td>
+                    <td>{{ item.amount }}</td>
+                    <td>{% if item.bought %}Yes{% else %}No{% endif %}</td>
+                    <td>{{ item.date_added }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
     <p>No items are available.</p>
-{% endif %}
+    {% endif %}
+    <br>
+    <a href="{% url 'add_item' %}"><button>Add Item</button></a>
+</body>
+</html>
