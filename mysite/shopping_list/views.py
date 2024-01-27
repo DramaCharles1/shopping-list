@@ -18,3 +18,6 @@ class IndexView(generic.ListView):
         Excludes any questions that aren't published yet.
         """
         return Item.objects.filter(date_added__lte=timezone.now())
+
+class AddItemView(generic.TemplateView):
+    template_name = "shopping_list/add_item.html"
