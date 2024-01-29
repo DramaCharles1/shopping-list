@@ -1,6 +1,7 @@
 django
 django-debug-toolbar
 djangorestframework
+django-cors-headers
 pylint
 pylint-django
 mysqlclient
