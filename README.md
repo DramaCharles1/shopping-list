@@ -27,6 +27,9 @@ Build docker compose\
 `docker-compose build <container from yaml>`\
 Run docker compose\
 `docker-compose up <container from yaml>`
+### Run tests
+Run shopping_list tests\
+`TEST=y docker-compose up backend`
 
 ### Docker troubleshoot
 Problem with docker revision 2904 causing http header problem\
