@@ -1,7 +1,17 @@
+import datetime
 from django.test import TestCase
 from django.utils import timezone
 
 from .models import Item
+
+class ItemModelTests(TestCase):
+    def test_was_item_add_recently(self):
+        """
+        Check if item was published recently
+        """
+        time = timezone.now() + datetime.timedelta(days=30)
+        created_item = Item(item="milk", amount=1, date_added=time, bought=False)
+        self.assertIs(created_item.was_published_recently(), False)
 
 def create_item(item, amount,date_added,bought):
     """
