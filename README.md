@@ -27,7 +27,9 @@ Remove volume attached to container\
 Build docker compose\
 `docker-compose build <container from yaml>`\
 Run docker compose\
-`docker-compose up <container from yaml>`
+`docker-compose up <container from yaml>`\
+Start bash in docker compose container\
+`docker-compose exec <container from yaml> bash`
 
 ### Run tests
 Run shopping_list tests\
