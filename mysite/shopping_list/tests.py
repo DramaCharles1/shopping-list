@@ -30,3 +30,13 @@ class ShoppingListIndexViewTests(TestCase):
         self.assertContains(response, "No items are available.")
         self.assertQuerySetEqual(response.context["latest_shopping_list"], [])
 
+    def test_item_added(self):
+        """
+        If no items exist, an appropriate message is displayed.
+        """
+        item = create_item(item="ketchup", amount=1, date_added=timezone.now(), bought=False)
+        response = self.client.get("/shopping_list/")
+        self.assertQuerySetEqual(
+            response.context["latest_shopping_list"],
+            [item],
+        )
