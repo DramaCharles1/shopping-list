@@ -11,6 +11,7 @@
     <table border="1">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Name</th>
                 <th>Amount</th>
                 <th>Bought</th>
@@ -20,6 +21,7 @@
         <tbody>
             {% for item in latest_shopping_list %}
                 <tr>
+                    <td>{{ item.item_no }}</td>
                     <td>{{ item.item }}</td>
                     <td>{{ item.amount }}</td>
                     <td>{% if item.bought %}Yes{% else %}No{% endif %}</td>
