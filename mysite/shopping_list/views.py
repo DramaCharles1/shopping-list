@@ -10,6 +10,11 @@ class ItemlListCreateView(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
     name="add-item"
 
+class DeleteItemView(generics.DestroyAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    name="delete-item"
+
 class IndexView(generic.ListView):
     template_name = "shopping_list/index.html"
     context_object_name = "latest_shopping_list"
