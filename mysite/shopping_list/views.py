@@ -8,10 +8,12 @@ from .models import Item
 class ItemlListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    name="add-item"
 
 class IndexView(generic.ListView):
     template_name = "shopping_list/index.html"
     context_object_name = "latest_shopping_list"
+    name = "index"
 
     def get_queryset(self):
         """
@@ -21,3 +23,4 @@ class IndexView(generic.ListView):
 
 class AddItemView(generic.TemplateView):
     template_name = "shopping_list/add_item.html"
+    name = "add_item"
