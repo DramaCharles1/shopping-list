@@ -1,9 +1,17 @@
 from django.views import generic
 from django.utils import timezone
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
 from .serializers import ItemSerializer
 from .models import Item
 
+class ApiRoot(generics.GenericAPIView): 
+    name = 'api-root'
+    def get(self, request, *args, **kwargs): 
+        return Response({ 
+            'items': reverse(Item.item, request=request), 
+            })  
 
 class ItemlListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
