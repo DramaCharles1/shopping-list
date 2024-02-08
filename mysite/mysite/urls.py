@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from shopping_list.views import DeleteItemView
+
+router = routers.DefaultRouter()
+router.register(r'items', DeleteItemView)
 
 urlpatterns = [
     path("shopping_list/", include("shopping_list.urls")),
-    path('api/', include('shopping_list.urls')),
+    #path('api/', include('shopping_list.urls')),
     path('admin/', admin.site.urls),
 ]
