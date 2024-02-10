@@ -40,3 +40,13 @@ class ShoppingListIndexViewTests(TestCase):
             response.context["latest_shopping_list"],
             [item],
         )
+
+class DeleteItemViewTests(TestCase):
+    def test_delete_item_from_list(self):
+        """
+        Add an item to the mock database and then delete it using the
+        delete-item endpoint.
+        """
+        item = create_item(item="coffee", amount=1, date_added=timezone.now(), bought=False)
+        response = self.client.delete(f"/shopping_list/api/delete-item/{item.pk}/")
+        self.assertEqual(response.status_code, 204)
