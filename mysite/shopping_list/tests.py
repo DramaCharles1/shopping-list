@@ -1,4 +1,5 @@
 import datetime
+import json
 from django.test import TestCase
 from django.utils import timezone
 
@@ -50,3 +51,26 @@ class DeleteItemViewTests(TestCase):
         item = create_item(item="coffee", amount=1, date_added=timezone.now(), bought=False)
         response = self.client.delete(f"/shopping_list/api/delete-item/{item.pk}/")
         self.assertEqual(response.status_code, 204)
+
+class ItemlListCreateViewTests(TestCase):
+    def test_list_item_using_endpoint(self):
+        """
+        Add an item to the mock database and create a json structure that the endpoint should
+        generate when using GET.
+        """
+        item = create_item(item="item-added-for-test",
+                            amount=1,
+                            date_added=timezone.now(),
+                            bought=False)
+        response = self.client.get("/shopping_list/api/add-item/")
+        self.assertEqual(response.status_code, 200)
+        should_respond = [{"id":item.pk,
+                          "item":item.item,
+                          "amount":item.amount,
+                          "date_added":item.date_added.strftime('%Y-%m-%dT%H:%M:%S'),
+                          "bought":False}]
+        json_should_respond = json.dumps(should_respond)
+        json_response = json.dumps(response.json())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertJSONEqual(json_response, json_should_respond)
