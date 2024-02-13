@@ -8,6 +8,10 @@ class Item(models.Model):
     amount = models.IntegerField()
     date_added = models.DateTimeField()
     bought = models.BooleanField()
+
+    class Meta:
+        ordering = ('date_added',)
+
     def __str__(self):
         return self.item
 
