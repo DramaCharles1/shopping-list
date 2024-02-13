@@ -2,6 +2,7 @@ import datetime
 import json
 from django.test import TestCase
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 
 from .models import Item
 
@@ -13,6 +14,15 @@ class ItemModelTests(TestCase):
         time = timezone.now() + datetime.timedelta(days=30)
         created_item = Item(item="milk", amount=1, date_added=time, bought=False)
         self.assertIs(created_item.was_published_recently(), False)
+
+    def test_if_amount_is_negative(self):
+        """
+        ValidationError should be raised if an item with negative amount is added to the database.
+        validators will not be run automatically when you save a model. full_clean needs
+        to be called in order to run all validators.
+        """
+        item = create_item(item="ketchup", amount=-99, date_added=timezone.now(), bought=False)
+        self.assertRaises(ValidationError, item.full_clean)
 
 def create_item(item, amount,date_added,bought):
     """
