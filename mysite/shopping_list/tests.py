@@ -84,3 +84,17 @@ class ItemlListCreateViewTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertJSONEqual(json_response, json_should_respond)
+
+    def test_item_with_zero_or_negative_amount_not_allowed(self):
+        """
+        The endpoint should not allow item with zero or negative amount to be added to
+        the database.
+        """
+        zero_amount_item = {"id":1,
+                          "item":"item-with-zero-amount",
+                          "amount":0,
+                          "date_added":"2024-01-24T12:00:00Z",
+                          "bought":False}
+        response = self.client.post("/shopping_list/api/add-item/",
+                                     data=zero_amount_item, format="json")
+        self.assertEqual(response.status_code, 400)
