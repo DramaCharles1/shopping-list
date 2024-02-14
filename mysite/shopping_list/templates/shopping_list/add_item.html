@@ -43,13 +43,21 @@
                     bought: itemBought,
                 }),
             })
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else if (response.status === 400) {
+                    throw new Error('Invalid input: ' + response.statusText);
+                } else {
+                    throw new Error('Failed to add item: ' + response.statusText);
+                }
+            })
             .then(data => {
                 console.log('Item added:', data);
                 alert('Item added successfully!');
             })
             .catch(error => {
-                console.error('Error adding item:', error);
+                console.error('Error adding item:', error.message);
                 alert('Error adding item. Please try again.');
             });
         }
