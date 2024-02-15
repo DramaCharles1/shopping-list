@@ -102,3 +102,15 @@ Manage shell\
 
 ### Add admin
 `python manage.py createsuperuser`
+
+# Frontend using React
+This part is instructions related to the frontend and client side of the shopping list application. For this part React will be used and all instructions on how to setup and install the environment will be here.
+
+### Install Node.js v21.x on ubuntu
+`curl -fsSL https://deb.nodesource.com/setup_21.x | sudo -E bash - &&\ sudo apt-get install -y nodejs`
+
+### Install dependencies
+`npm install`
+
+### Create new React project
+`npx create-react-app frontend`
