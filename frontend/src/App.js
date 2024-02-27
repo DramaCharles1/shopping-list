@@ -1,4 +1,4 @@
-import { ShoppingListForm } from "./components/ShoppingListform";
+import { ShoppingListForm } from "./components/ShoppingListForm";
 import { ShoppingList } from "./components/ShoppingList";
 import { useState } from "react";
 import "./App.css";
