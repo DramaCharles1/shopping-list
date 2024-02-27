@@ -6,11 +6,11 @@ import "./App.css";
 export default function App() {
   const [shoppingList, setShoppingList] = useState([]);
 
-  function addItem(title) {
+  function addItem(title, amount) {
     setShoppingList((currentShoppingList) => {
       return [
         ...currentShoppingList,
-        { id: crypto.randomUUID(), title, bought: false },
+        { id: crypto.randomUUID(), title, bought: false, amount },
       ];
     });
   }

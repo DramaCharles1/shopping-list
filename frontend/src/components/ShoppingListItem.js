@@ -1,5 +1,6 @@
 export function ShoppingListItem({
   title,
+  amount,
   bought,
   id,
   toggleShoppingListItem,
@@ -8,7 +9,7 @@ export function ShoppingListItem({
   return (
     <li>
       <label>
-        {title}
+        {title} amount: {amount}
         <input
           type="checkbox"
           checked={bought}
