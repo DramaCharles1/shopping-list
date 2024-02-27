@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { ShoppingListForm } from "./components/ShoppingListform";
+import { ShoppingList } from "./components/ShoppingList";
+import { useState } from "react";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const [shoppingList, setShoppingList] = useState([]);
+
+  function addItem(title) {
+    setShoppingList((currentShoppingList) => {
+      return [
+        ...currentShoppingList,
+        { id: crypto.randomUUID(), title, bought: false },
+      ];
+    });
+  }
+
+  function toggleShoppingListItem(id, bought) {
+    setShoppingList((currentShoppingList) => {
+      return currentShoppingList.map((shoppingListItem) => {
+        if (shoppingListItem.id === id) {
+          return { ...shoppingListItem, bought };
+        }
+        return shoppingListItem;
+      });
+    });
+  }
+
+  function deleteShoppingListItem(id) {
+    setShoppingList((currentShoppingList) => {
+      return currentShoppingList.filter(
+        (shoppingListItem) => shoppingListItem.id !== id
+      );
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ShoppingListForm onSubmit={addItem} />
+      <h1 className="list-hedar">Shopping list</h1>
+      <ShoppingList
+        shoppingList={shoppingList}
+        toggleShoppingListItem={toggleShoppingListItem}
+        deleteShoppingListItem={deleteShoppingListItem}
+      />
+    </>
   );
 }
-
-export default App;
