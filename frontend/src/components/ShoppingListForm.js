@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 export function ShoppingListForm({ onSubmit }) {
-  const [newItem, setNewItem] = useState("");
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (newItem === "") return;
-    onSubmit(newItem);
-    setNewItem("");
+    if (title === "" || amount === "") return;
+    onSubmit(title, amount);
+    setTitle("");
+    setAmount("");
   }
 
   return (
@@ -15,14 +17,20 @@ export function ShoppingListForm({ onSubmit }) {
       <div className="shoping-list-row">
         <label htmlFor="add-item-label">New item</label>
         <input
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           type="text"
-          id="item"
-          className="add-item-form"
+          id="title"
+          className="set-title-field"
         ></input>
         <label htmlFor="add-amount-label">Amount</label>
-        <input type="text" id="amount" className="add-amount-form"></input>
+        <input
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          type="text"
+          id="amount"
+          className="set-amount-field"
+        ></input>
       </div>
       <button className="add-item-button">Add</button>
     </form>
