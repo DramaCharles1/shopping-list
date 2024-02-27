@@ -7,9 +7,18 @@ export function ShoppingListForm({ onSubmit }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (title === "" || amount === "") return;
+
     onSubmit(title, amount);
     setTitle("");
     setAmount("");
+  }
+
+  function handleAmountChange(e) {
+    const value = e.target.value;
+    // Allow only numeric input
+    if (/^\d*\.?\d*$/.test(value)) {
+      setAmount(value);
+    }
   }
 
   return (
@@ -26,7 +35,7 @@ export function ShoppingListForm({ onSubmit }) {
         <label htmlFor="add-amount-label">Amount</label>
         <input
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={handleAmountChange}
           type="text"
           id="amount"
           className="set-amount-field"
