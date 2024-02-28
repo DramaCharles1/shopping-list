@@ -36,8 +36,8 @@ export default function App() {
 
   return (
     <>
+      <h1 className="list-header">Shopping list</h1>
       <ShoppingListForm onSubmit={addItem} />
-      <h1 className="list-hedar">Shopping list</h1>
       <ShoppingList
         shoppingList={shoppingList}
         toggleShoppingListItem={toggleShoppingListItem}
