@@ -1,7 +1,7 @@
 import { ShoppingListForm } from "./components/ShoppingListForm";
 import { ShoppingList } from "./components/ShoppingList";
 import { useState } from "react";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [shoppingList, setShoppingList] = useState([]);
@@ -36,8 +36,8 @@ export default function App() {
 
   return (
     <>
+      <h1 className="list-header">Shopping list</h1>
       <ShoppingListForm onSubmit={addItem} />
-      <h1 className="list-hedar">Shopping list</h1>
       <ShoppingList
         shoppingList={shoppingList}
         toggleShoppingListItem={toggleShoppingListItem}

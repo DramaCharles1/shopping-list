@@ -1,3 +1,6 @@
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { useState } from "react";
 
 export function ShoppingListForm({ onSubmit }) {
@@ -13,35 +16,27 @@ export function ShoppingListForm({ onSubmit }) {
     setAmount("");
   }
 
-  function handleAmountChange(e) {
-    const value = e.target.value;
-    // Allow only numeric input
-    if (/^\d*\.?\d*$/.test(value)) {
-      setAmount(value);
-    }
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="shopping-list-form">
-      <div className="shoping-list-row">
-        <label htmlFor="add-item-label">New item</label>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          type="text"
-          id="title"
-          className="set-title-field"
-        ></input>
-        <label htmlFor="add-amount-label">Amount</label>
-        <input
-          value={amount}
-          onChange={handleAmountChange}
-          type="text"
-          id="amount"
-          className="set-amount-field"
-        ></input>
-      </div>
-      <button className="add-item-button">Add</button>
-    </form>
+    <Container>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="add-new-item">
+          <Form.Control
+            type="text"
+            placeholder="New item"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Form.Control
+            type="number"
+            placeholder="Enter amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <Button variant="primary" type="submit">
+            Add item
+          </Button>
+        </Form.Group>
+      </Form>
+    </Container>
   );
 }
