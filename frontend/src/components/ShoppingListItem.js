@@ -1,3 +1,5 @@
+import ListGroup from "react-bootstrap/ListGroup";
+
 export function ShoppingListItem({
   title,
   amount,
@@ -7,9 +9,11 @@ export function ShoppingListItem({
   deleteShoppingListItem,
 }) {
   return (
-    <li>
-      <label>
-        {title} amount: {amount}
+    <ListGroup>
+      <ListGroup.Item>
+        <label>
+          {title} amount: {amount}
+        </label>
         <input
           type="checkbox"
           checked={bought}
@@ -21,7 +25,7 @@ export function ShoppingListItem({
         >
           delete
         </button>
-      </label>
-    </li>
+      </ListGroup.Item>
+    </ListGroup>
   );
 }
