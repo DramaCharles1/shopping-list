@@ -1,7 +1,7 @@
 import { ShoppingListForm } from "./components/ShoppingListForm";
 import { ShoppingList } from "./components/ShoppingList";
 import { useState } from "react";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [shoppingList, setShoppingList] = useState([]);
