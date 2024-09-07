@@ -1,3 +1,4 @@
+import Container from "react-bootstrap/Container";
 import { ShoppingListItem } from "./ShoppingListItem";
 
 export function ShoppingList({
@@ -6,18 +7,22 @@ export function ShoppingList({
   deleteShoppingListItem,
 }) {
   return (
-    <ul className="shopping-list">
-      {shoppingList.length === 0 && "Shopping list is empty"}
-      {shoppingList.map((item) => {
-        return (
-          <ShoppingListItem
-            {...item}
-            key={item.id}
-            toggleShoppingListItem={toggleShoppingListItem}
-            deleteShoppingListItem={deleteShoppingListItem}
-          />
-        );
-      })}
-    </ul>
+    <Container>
+      <ul className="shopping-list">
+        {shoppingList.length === 0 && (
+          <p className="empty-list">Shopping list is empty</p>
+        )}
+        {shoppingList.map((item) => {
+          return (
+            <ShoppingListItem
+              {...item}
+              key={item.id}
+              toggleShoppingListItem={toggleShoppingListItem}
+              deleteShoppingListItem={deleteShoppingListItem}
+            />
+          );
+        })}
+      </ul>
+    </Container>
   );
 }
