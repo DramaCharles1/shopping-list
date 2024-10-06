@@ -12,16 +12,14 @@ export function ShoppingList({
         {shoppingList.length === 0 && (
           <p className="empty-list">Shopping list is empty</p>
         )}
-        {shoppingList.map((item) => {
-          return (
-            <ShoppingListItem
-              {...item}
-              key={item.id}
-              toggleShoppingListItem={toggleShoppingListItem}
-              deleteShoppingListItem={deleteShoppingListItem}
-            />
-          );
-        })}
+        {shoppingList.map((item) => (
+          <ShoppingListItem
+            {...item}
+            key={item.id}
+            toggleShoppingListItem={toggleShoppingListItem}
+            deleteShoppingListItem={deleteShoppingListItem}
+          />
+        ))}
       </ul>
     </Container>
   );
