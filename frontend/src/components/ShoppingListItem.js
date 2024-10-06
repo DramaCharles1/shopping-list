@@ -1,7 +1,7 @@
 import ListGroup from "react-bootstrap/ListGroup";
 
 export function ShoppingListItem({
-  title,
+  item,
   amount,
   bought,
   id,
@@ -12,7 +12,7 @@ export function ShoppingListItem({
     <ListGroup>
       <ListGroup.Item>
         <label>
-          {title} amount: {amount}
+          {item} amount: {amount}
         </label>
         <input
           type="checkbox"
