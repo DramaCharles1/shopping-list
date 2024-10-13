@@ -114,3 +114,18 @@ This part is instructions related to the frontend and client side of the shoppin
 
 ### Create new React project
 `npx create-react-app frontend`
+
+## NVM
+`Node Version Manager is used to manage different version of node`
+
+### Install NVM
+`curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash`
+
+### List Available Node.js Versions
+`nvm ls`
+
+### Install a Specific Node.js Version
+`nvm install <version>`
+
+### Switch Between Node.js Versions
+`nvm use <version>`
