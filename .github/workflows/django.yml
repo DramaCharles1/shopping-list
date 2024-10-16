@@ -21,24 +21,24 @@ jobs:
         docker-compose --version
 
     - name: Build containers
-      run: docker-compose -f "mysite/docker-compose.yaml" up --build -d
+      run: docker-compose -f "docker-compose.yaml" up --build -d
 
     - name: Flush database
       run: |
-        docker-compose -f "mysite/docker-compose.yaml" exec backend bash -c "python manage.py flush --no-input"
+        docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py flush --no-input"
 
     - name: Makemigrations
       run: |
-        docker-compose -f "mysite/docker-compose.yaml" exec backend bash -c "python manage.py makemigrations"
+        docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py makemigrations"
 
     - name: Migrate
       run: |
-        docker-compose -f "mysite/docker-compose.yaml" exec backend bash -c "python manage.py migrate --noinput"
+        docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py migrate --noinput"
 
     - name: Check Migration Status
       run: |
-        docker-compose -f "mysite/docker-compose.yaml" exec backend bash -c "python manage.py showmigrations"
+        docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py showmigrations"
 
     - name: Run Tests
       run: |
-        docker-compose -f "mysite/docker-compose.yaml" exec backend bash -c "python manage.py test shopping_list"
+        docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py test shopping_list"
