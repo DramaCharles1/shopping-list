@@ -47,3 +47,15 @@ test("adds a new item to the shopping list", async () => {
     expect(screen.getByText(/Bread/i)).toBeInTheDocument();
   });
 });
+
+test("displays error message when fetching items fails", async () => {
+  // Mock API error
+  axios.get.mockRejectedValueOnce(new Error("Failed to fetch items"));
+
+  render(<App />);
+
+  // Wait for the error message to appear
+  await waitFor(() => {
+    expect(screen.getByText("Failed to fetch items")).toBeInTheDocument();
+  });
+});
