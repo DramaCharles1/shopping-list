@@ -1,4 +1,4 @@
-name: Test backend
+name: Test back- and frontend
 
 on:
   push:
@@ -39,6 +39,10 @@ jobs:
       run: |
         docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py showmigrations"
 
-    - name: Run Tests
+    - name: Run backend tests
       run: |
         docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py test shopping_list"
+
+    - name: Run frontend tests
+      run: |
+        docker-compose -f "docker-compose.yaml" exec frontend npm test
