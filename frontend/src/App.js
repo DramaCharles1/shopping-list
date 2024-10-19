@@ -7,6 +7,7 @@ import "./App.css";
 
 export default function App() {
   const [shoppingList, setShoppingList] = useState([]);
+  const [error, setError] = useState(null); // New state for error
 
   // Fetch shopping list items from the backend when the component loads
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function App() {
         setShoppingList(response.data);
       } catch (error) {
         console.error("Error fetching items:", error);
+        setError("Failed to fetch items");
       }
     }
 
@@ -46,6 +48,7 @@ export default function App() {
       ]);
     } catch (error) {
       console.error("Error adding item:", error);
+      setError("Error adding item");
     }
   }
 
@@ -66,6 +69,7 @@ export default function App() {
       );
     } catch (error) {
       console.error("Error updating item:", error);
+      setError("Error updating item");
     }
   }
 
@@ -79,12 +83,17 @@ export default function App() {
       setShoppingList((prevList) => prevList.filter((item) => item.id !== id));
     } catch (error) {
       console.error("Error deleting item:", error);
+      setError("Error deleting item");
     }
   }
 
   return (
     <>
       <h1 className="list-header">Shopping list</h1>
+
+      {/* Display error message if there is one */}
+      {error && <p className="error-message">{error}</p>}
+
       <ShoppingListForm onSubmit={addItem} />
       <ShoppingList
         shoppingList={shoppingList}
