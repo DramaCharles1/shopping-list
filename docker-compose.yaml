@@ -27,7 +27,7 @@ services:
     entrypoint: ./docker-entrypoint.sh
     restart: "no"
     volumes:
-      - .:/shopping_list
+      - ./mysite:/shopping_list/mysite
     ports:
       - "8000:8000"
     environment:
@@ -47,6 +47,7 @@ services:
     restart: "no"
     volumes:
       - ./frontend:/shopping_list/frontend
+      - /shopping_list/frontend/node_modules
     ports:
       - "3000:3000"
     healthcheck:
