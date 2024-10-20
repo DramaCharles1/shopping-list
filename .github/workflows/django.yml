@@ -1,4 +1,4 @@
-name: Test backend
+name: Test back- and frontend
 
 on:
   push:
@@ -20,8 +20,17 @@ jobs:
         sudo chmod +x /usr/local/bin/docker-compose
         docker-compose --version
 
-    - name: Build containers
-      run: docker-compose -f "docker-compose.yaml" up --build -d
+    - name: Build db
+      run: docker-compose -f "docker-compose.yaml" up db --build -d
+
+    - name: Build backend
+      run: docker-compose -f "docker-compose.yaml" up backend --build -d
+
+    - name: Build frontend
+      run: docker-compose -f "docker-compose.yaml" up frontend --build -d
+
+    - name: debug logs
+      run: docker-compose -f "docker-compose.yaml" logs frontend
 
     - name: Flush database
       run: |
@@ -39,6 +48,10 @@ jobs:
       run: |
         docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py showmigrations"
 
-    - name: Run Tests
+    - name: Run backend tests
       run: |
         docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py test shopping_list"
+
+    - name: Run frontend tests
+      run: |
+        docker-compose -f "docker-compose.yaml" exec frontend npm test

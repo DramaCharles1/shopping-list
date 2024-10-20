@@ -27,7 +27,7 @@ services:
     entrypoint: ./docker-entrypoint.sh
     restart: "no"
     volumes:
-      - .:/shopping_list
+      - ./mysite:/shopping_list/mysite
     ports:
       - "8000:8000"
     environment:
@@ -44,10 +44,16 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     working_dir: /shopping_list/frontend
-    restart: "no"
+    restart: "always"
     volumes:
-      - .:/shopping_list
+      - ./frontend:/shopping_list/frontend
     ports:
       - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 volumes:
   data:
