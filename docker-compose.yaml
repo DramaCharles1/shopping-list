@@ -46,7 +46,7 @@ services:
     working_dir: /shopping_list/frontend
     restart: "no"
     volumes:
-      - .:/shopping_list
+      - ./frontend:/shopping_list/frontend
     ports:
       - "3000:3000"
     healthcheck:
