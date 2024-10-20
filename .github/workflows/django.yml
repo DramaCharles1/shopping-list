@@ -20,8 +20,14 @@ jobs:
         sudo chmod +x /usr/local/bin/docker-compose
         docker-compose --version
 
-    - name: Build containers
-      run: docker-compose -f "docker-compose.yaml" up --build -d
+    - name: Build db
+      run: docker-compose -f "docker-compose.yaml" up db --build -d
+
+    - name: Build backend
+      run: docker-compose -f "docker-compose.yaml" up backend --build -d
+
+    - name: Build frontend
+      run: docker-compose -f "docker-compose.yaml" up frontend --build -d
 
     - name: Flush database
       run: |
