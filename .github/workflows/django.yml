@@ -23,6 +23,9 @@ jobs:
     - name: Build containers
       run: docker-compose -f "docker-compose.yaml" up --build -d
 
+    - name: debug logs
+      run: docker-compose -f "docker-compose.yaml" logs frontend
+
     - name: Flush database
       run: |
         docker-compose -f "docker-compose.yaml" exec backend bash -c "python manage.py flush --no-input"
