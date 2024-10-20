@@ -4,5 +4,4 @@ COPY package.json .
 RUN npm install
 COPY . /shopping_list/frontend
 EXPOSE 3000
-#CMD ["npm", "start"]
-CMD ["pwd", "ls"]
+CMD ["npm", "start"]
