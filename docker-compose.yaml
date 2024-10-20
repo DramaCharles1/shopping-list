@@ -44,7 +44,7 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     working_dir: /shopping_list/frontend
-    restart: "no"
+    restart: "always"
     volumes:
       - ./frontend:/shopping_list/frontend
     ports:
