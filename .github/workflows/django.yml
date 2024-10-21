@@ -51,4 +51,4 @@ jobs:
 
     - name: Run frontend tests
       run: |
-        docker-compose -f "docker-compose.yaml" exec frontend npm test
+        docker-compose -f "docker-compose.yaml" exec frontend npm test -- --watchAll=false
