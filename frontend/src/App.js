@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ShoppingListForm } from "./components/ShoppingListForm";
 import { ShoppingList } from "./components/ShoppingList";
+import { ShoppingListVerticalNavBar } from "./components/ShoppingListVerticalNavBar";
+import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -88,18 +90,22 @@ export default function App() {
   }
 
   return (
-    <>
-      <h1 className="list-header">Shopping list</h1>
+    <Container fluid className="h-100">
+      <Row className="h-100">
+        <Col md={3} className="nav-column vh-100">
+          <ShoppingListVerticalNavBar />
+        </Col>
+        <Col md={9}>
+          {error && <p className="error-message">{error}</p>}
 
-      {/* Display error message if there is one */}
-      {error && <p className="error-message">{error}</p>}
-
-      <ShoppingListForm onSubmit={addItem} />
-      <ShoppingList
-        shoppingList={shoppingList}
-        toggleShoppingListItem={toggleShoppingListItem}
-        deleteShoppingListItem={deleteShoppingListItem}
-      />
-    </>
+          <ShoppingListForm onSubmit={addItem} />
+          <ShoppingList
+            shoppingList={shoppingList}
+            toggleShoppingListItem={toggleShoppingListItem}
+            deleteShoppingListItem={deleteShoppingListItem}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
