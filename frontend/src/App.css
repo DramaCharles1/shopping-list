@@ -14,3 +14,20 @@
 .delete-item {
   float: right; 
 }
+
+.container-fluid {
+  padding: 20px;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #000000; /* You can adjust the color as needed */
+}
+
+.nav-column {
+  background-color: #f8f9fa; /* Apply the background color to the full column */
+  padding-top: 20px;
+}
