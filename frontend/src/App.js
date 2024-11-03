@@ -11,6 +11,7 @@ export default function App() {
         <Routes>
           <Route Component={ShoppingList} path="/shopping-list" />
           <Route Component={Pantry} path="/pantry" />
+          <Route path="*" element={<div>404 - Page Not Found</div>} />
         </Routes>
       </Router>
     </div>
