@@ -1,6 +1,6 @@
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import axios from "axios";
-import App from "./App";
+import { ShoppingList } from "./ShoppingList";
 
 // Mock the axios module
 jest.mock("axios");
@@ -13,7 +13,7 @@ test("fetches and displays shopping list items on mount", async () => {
   ];
   axios.get.mockResolvedValueOnce({ data: items });
 
-  render(<App />);
+  render(<ShoppingList />);
 
   // Wait for the list items to be displayed
   await waitFor(() => {
@@ -31,7 +31,7 @@ test("adds a new item to the shopping list", async () => {
   const newItem = { id: 1, item: "Bread", amount: 1, bought: false };
   axios.post.mockResolvedValueOnce({ data: newItem });
 
-  render(<App />);
+  render(<ShoppingList />);
 
   // Fill out the form and submit
   const input = screen.getByPlaceholderText("New item");
@@ -52,7 +52,7 @@ test("displays error message when fetching items fails", async () => {
   // Mock API error
   axios.get.mockRejectedValueOnce(new Error("Failed to fetch items"));
 
-  render(<App />);
+  render(<ShoppingList />);
 
   // Wait for the error message to appear
   await waitFor(() => {
