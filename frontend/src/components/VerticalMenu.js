@@ -7,7 +7,7 @@ export function VerticalMenu() {
         <Nav.Link href="/shopping-list" className="custom-link">
           Current shopping list
         </Nav.Link>
-        <Nav.Link eventKey="link-pantry" className="custom-link">
+        <Nav.Link href="/pantry" className="custom-link">
           Pantry
         </Nav.Link>
         <Nav.Link eventKey="link-recipe" className="custom-link">
