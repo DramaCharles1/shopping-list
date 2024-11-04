@@ -3,8 +3,8 @@ import Nav from "react-bootstrap/Nav";
 export function VerticalMenu() {
   return (
     <div className="navbar-container">
-      <Nav defaultActiveKey="/home" className="custom-nav flex-column">
-        <Nav.Link href="/home" className="custom-link">
+      <Nav defaultActiveKey="/shopping-list" className="custom-nav flex-column">
+        <Nav.Link href="/shopping-list" className="custom-link">
           Current shopping list
         </Nav.Link>
         <Nav.Link eventKey="link-pantry" className="custom-link">
