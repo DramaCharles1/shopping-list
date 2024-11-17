@@ -14,7 +14,7 @@ export function ShoppingList() {
     async function fetchShoppingListItems() {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/shopping_list/api/items/"
+          "http://127.0.0.1:8000/shopping_list/api/shopping-list/items/"
         );
         setShoppingList(response.data);
       } catch (error) {
@@ -32,7 +32,7 @@ export function ShoppingList() {
       const currentDate = new Date();
       const formattedDate = currentDate.toISOString();
       const response = await axios.post(
-        "http://127.0.0.1:8000/shopping_list/api/add-item/",
+        "http://127.0.0.1:8000/shopping_list/api/shopping-list/add-item/",
         {
           item: title,
           amount: amount,
@@ -56,7 +56,7 @@ export function ShoppingList() {
   async function toggleShoppingListItem(id, boughtStatus) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/shopping_list/api/update-item/${id}/`,
+        `http://127.0.0.1:8000/shopping_list/api/shopping-list/add-item/${id}/`,
         {
           bought: boughtStatus,
         }
@@ -77,7 +77,7 @@ export function ShoppingList() {
   async function deleteShoppingListItem(id) {
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/shopping_list/api/delete-item/${id}/`
+        `http://127.0.0.1:8000/shopping_list/api/shopping-list/delete-item/${id}/`
       );
 
       setShoppingList((prevList) => prevList.filter((item) => item.id !== id));
