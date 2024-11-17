@@ -4,15 +4,15 @@ from django.test import TestCase
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
-from .models import Item
+from .models import ShoppingListItem
 
-class ItemModelTests(TestCase):
+class ShoppingListItemModelTests(TestCase):
     def test_was_item_add_recently(self):
         """
         Check if item was published recently
         """
         time = timezone.now() + datetime.timedelta(days=30)
-        created_item = Item(item="milk", amount=1, date_added=time, bought=False)
+        created_item = ShoppingListItem(item="milk", amount=1, date_added=time, bought=False)
         self.assertIs(created_item.was_published_recently(), False)
 
     def test_if_amount_is_negative(self):
@@ -29,7 +29,7 @@ def create_item(item, amount,date_added,bought):
     Create an Item with item, amount, date_added, bought.
     """
     date_added = timezone.now()
-    return Item.objects.create(item=item, amount=amount, date_added=date_added, bought=bought)
+    return ShoppingListItem.objects.create(item=item, amount=amount, date_added=date_added, bought=bought)
 
 class ShoppingListIndexViewTests(TestCase):
     def test_no_items(self):
@@ -52,7 +52,7 @@ class ShoppingListIndexViewTests(TestCase):
             [item],
         )
 
-class DeleteItemViewTests(TestCase):
+class ShoppingListDeleteItemViewTests(TestCase):
     def test_delete_item_from_list(self):
         """
         Add an item to the mock database and then delete it using the
@@ -62,7 +62,7 @@ class DeleteItemViewTests(TestCase):
         response = self.client.delete(f"/shopping_list/api/delete-item/{item.pk}/")
         self.assertEqual(response.status_code, 204)
 
-class ItemlListCreateViewTests(TestCase):
+class ShoppingListItemlListCreateViewTests(TestCase):
     def test_list_item_using_endpoint(self):
         """
         Add an item to the mock database and create a json structure that the endpoint should
