@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ItemForm } from "../components/ItemForm";
 import { ItemList } from "../components/ItemList";
+import { ShoppingListItem } from "../components/ShoppingListItem";
 import { VerticalMenu } from "../components/VerticalMenu";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -56,7 +57,7 @@ export function ShoppingList() {
   async function toggleShoppingListItem(id, boughtStatus) {
     try {
       await axios.patch(
-        `http://127.0.0.1:8000/shopping_list/api/shopping-list/add-item/${id}/`,
+        `http://127.0.0.1:8000/shopping_list/api/shopping-list/update-item/${id}/`,
         {
           bought: boughtStatus,
         }
@@ -98,6 +99,7 @@ export function ShoppingList() {
           <ItemForm onSubmit={addShoppingListItem} />
           <ItemList
             ItemList={shoppingList}
+            ItemComponent={ShoppingListItem}
             toggleListItem={toggleShoppingListItem}
             deleteListItem={deleteShoppingListItem}
           />
