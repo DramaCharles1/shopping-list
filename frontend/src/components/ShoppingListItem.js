@@ -1,6 +1,6 @@
 import ListGroup from "react-bootstrap/ListGroup";
 
-export function Item({
+export function ShoppingListItem({
   item,
   amount,
   bought,
