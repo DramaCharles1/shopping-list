@@ -48,6 +48,27 @@ test("adds a new item to the pantry list", async () => {
   });
 });
 
+test("delete an item from the pantry list", async () => {
+  // Mock API response
+  const items = [{ id: 1, item: "Juice", amount: 2 }];
+  axios.get.mockResolvedValueOnce({ data: items });
+
+  render(<Pantry />);
+
+  await waitFor(() => {
+    expect(screen.getByText(/delete/i)).toBeInTheDocument();
+  });
+
+  // Click delete button
+  const deleteButton = screen.getByText(/delete/i);
+  fireEvent.click(deleteButton);
+
+  // Check if the item has been deleted from the list
+  await waitFor(() => {
+    expect(screen.getByText(/List is empty/i)).toBeInTheDocument();
+  });
+});
+
 test("displays error message when fetching items fails", async () => {
   // Mock API error
   axios.get.mockRejectedValueOnce(new Error("Failed to fetch items"));
