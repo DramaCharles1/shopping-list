@@ -1,15 +1,17 @@
 import Container from "react-bootstrap/Container";
-import { Item } from "./Item";
 
-export function ItemList({ ItemList, toggleListItem, deleteListItem }) {
+export function ItemList({
+  ItemList,
+  ItemComponent,
+  toggleListItem,
+  deleteListItem,
+}) {
   return (
     <Container>
       <ul className="item-list">
-        {ItemList.length === 0 && (
-          <p className="empty-list">Shopping list is empty</p>
-        )}
+        {ItemList.length === 0 && <p className="empty-list">List is empty</p>}
         {ItemList.map((item) => (
-          <Item
+          <ItemComponent
             {...item}
             key={item.id}
             toggleListItem={toggleListItem}
