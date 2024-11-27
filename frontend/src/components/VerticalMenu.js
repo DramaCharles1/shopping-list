@@ -10,7 +10,7 @@ export function VerticalMenu() {
         <Nav.Link href="/pantry" className="custom-link">
           Pantry
         </Nav.Link>
-        <Nav.Link eventKey="link-recipe" className="custom-link">
+        <Nav.Link href="/recipe" className="custom-link">
           Recipe
         </Nav.Link>
       </Nav>
