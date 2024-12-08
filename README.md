@@ -129,3 +129,18 @@ This part is instructions related to the frontend and client side of the shoppin
 
 ### Switch Between Node.js Versions
 `nvm use <version>`
+
+# Server stuff
+Stuff related to webserver and reverse proxy
+
+## Apache2
+Webserver
+
+### Start server
+`sudo systemctl start apache2`
+
+### Stop server
+`sudo systemctl stop apache2`
+
+### Check status
+`sudo systemctl status apache2`
