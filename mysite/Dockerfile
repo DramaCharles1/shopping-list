@@ -1,16 +1,20 @@
 # Use an official Python runtime as a parent image
 FROM python:3.8
 
-# Set the working directory in the container
 WORKDIR /shopping_list
-# Copy the requirements file into the container at /mysite
+
 COPY requirements.txt /shopping_list/
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+# Create virtual environment and install dependencies
+RUN python3 -m venv /shopping_list/venv && \
+    /shopping_list/venv/bin/pip install --upgrade pip && \
+    /shopping_list/venv/bin/pip install -r requirements.txt
 
-# Copy the current directory contents into the container at /usr/src/app/
+# Copy application source code
 COPY . /shopping_list/
 
-# Make port 8000 available to the world outside this container
+# Expose Django's default port
 EXPOSE 8000
+
+# Set the environment variable to use the virtual environment
+ENV PATH="/shopping_list/venv/bin:$PATH"
