@@ -63,5 +63,7 @@ services:
     container_name: apache_server
     ports:
       - "80:80"
+    volumes:
+      - ./mysite:/shopping_list/mysite
 volumes:
   data:
