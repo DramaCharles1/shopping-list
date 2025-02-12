@@ -7,11 +7,13 @@ import "./App.css";
 export default function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route Component={ShoppingList} path="/shopping-list" />
-        <Route Component={Pantry} path="/pantry" />
-        <Route path="*" element={<div>404 - Page Not Found</div>} />
-      </Routes>
+      <Router basename="/shopping-list">
+        <Routes>
+          <Route path="/" element={<ShoppingList />} />
+          <Route path="/pantry" element={<Pantry />} />
+          <Route path="*" element={<div>404 - Page Not Found lolololo</div>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
