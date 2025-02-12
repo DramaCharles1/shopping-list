@@ -48,5 +48,6 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!axios)/"
     ]
-  }
+  },
+  "homepage": "/shopping-list"
 }
