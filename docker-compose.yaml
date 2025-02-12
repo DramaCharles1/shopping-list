@@ -55,6 +55,7 @@ services:
     volumes:
       - ./frontend:/shopping_list/frontend
       - /shopping_list/frontend/node_modules
+      - static_frontend:/shopping_list/frontend/build
     ports:
       - "3000:3000"
     healthcheck:
@@ -73,6 +74,7 @@ services:
     volumes:
       - ./mysite:/app/mysite
       - static_backend:/var/www/static/backend
+      - static_frontend:/var/www/static/frontend/shopping-list
       - venv_env:/venv_env
     env_file:
       - .env
@@ -80,3 +82,4 @@ volumes:
   data:
   venv_env:
   static_backend:
+  static_frontend:
