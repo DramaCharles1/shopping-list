@@ -22,14 +22,21 @@ services:
     build: 
       context: ./mysite/
       dockerfile: Dockerfile
+      args:
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     container_name: shopping_list
     working_dir: /shopping_list/mysite
     entrypoint: ./docker-entrypoint.sh
     restart: "no"
     volumes:
       - ./mysite:/shopping_list/mysite
-    ports:
-      - "8000:8000"
+      - static_backend:/var/www/static/
+      - venv_env:/venv_env
+    #Only for development
+    #ports:
+    #  - "8000:8000"
     environment:
       - TEST=${TEST:-}
     env_file:
@@ -64,6 +71,12 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./mysite:/shopping_list/mysite
+      - ./mysite:/app/mysite
+      - static_backend:/var/www/static/backend
+      - venv_env:/venv_env
+    env_file:
+      - .env
 volumes:
   data:
+  venv_env:
+  static_backend:
