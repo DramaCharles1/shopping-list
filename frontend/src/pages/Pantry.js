@@ -15,7 +15,7 @@ export function Pantry() {
     async function fetchPantryListItems() {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/shopping_list/api/pantry/items/"
+          "http://localhost/shopping_list/api/pantry/items/"
         );
         setPantryList(response.data);
       } catch (error) {
@@ -33,7 +33,7 @@ export function Pantry() {
       const currentDate = new Date();
       const formattedDate = currentDate.toISOString();
       const response = await axios.post(
-        "http://127.0.0.1:8000/shopping_list/api/pantry/add-item/",
+        "http://localhost/shopping_list/api/pantry/add-item/",
         {
           item: title,
           amount: amount,
@@ -56,7 +56,7 @@ export function Pantry() {
   async function deletePantryListItem(id) {
     try {
       await axios.delete(
-        `http://127.0.0.1:8000/shopping_list/api/pantry/delete-item/${id}/`
+        `http://localhost/shopping_list/api/pantry/delete-item/${id}/`
       );
 
       setPantryList((prevList) => prevList.filter((item) => item.id !== id));
